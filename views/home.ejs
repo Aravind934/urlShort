@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+       <!-- CSS only -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap."></script>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-sm-12" style="text-align: center;">
+                <h1>URL Shortener</h1>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" >
+                <form action="/create" method='post'>
+                    <div class="input-group">
+                      <input type="text" name="longurl" style="width:200px;" class="form-control text-center" placeholder="Type url">
+                      <div class="input-group-btn">
+                        <input type="submit" class="btn btn-primary " value="create">
+                      </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <% for(let i=0;i<url.length;i++){ %>
+            <div class="col-md-4">
+                <div class="card border-success mb-3" style="max-width: 18rem; min-height:250px;margin-top:10px;">
+                    <div class="card-header bg-transparent border-success">clickCount:<%= url[i].clickcount %></div>
+                    <div class="card-body text-success">
+                      <a href="localhost:3000/<%= url[i].shorturl %>" target="new class="card-title">localhost:3000/<%= url[i].shorturl %></a>
+                      <p class="card-text"><%= url[i].longurl %></p>
+                      <a href='/delete/<%= url[i].id %>'  role='button' type="button" class="btn btn-danger">remove</a>
+                    </div>
+                    
+                </div>
+           </div>
+           <% } %>
+        </div>
+    </body>
+</html>
